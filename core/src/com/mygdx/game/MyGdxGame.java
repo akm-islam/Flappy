@@ -11,6 +11,11 @@ public class MyGdxGame extends ApplicationAdapter {
 	Texture background;
 	Texture[] birds;
 	int flapState = 0;
+	float birdY=0;
+	float velocity=0;
+	int gameState =0;
+	float gravity=2;
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
@@ -18,21 +23,40 @@ public class MyGdxGame extends ApplicationAdapter {
 		birds = new Texture[2];
 		birds[0] = new Texture("bird.png");
 		birds[1] = new Texture("bird2.png");
+		birdY=Gdx.graphics.getHeight() / 2 - birds[0].getHeight() / 2;
 	}
 
 	@Override
 	public void render () {
-
-		if (flapState == 0) {
-			flapState = 1;
-		} else {
-			flapState = 0;
-		}
-
 		batch.begin();
 		batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		batch.draw(birds[flapState], Gdx.graphics.getWidth() / 2 - birds[flapState].getWidth() / 2, Gdx.graphics.getHeight() / 2 - birds[flapState].getHeight() / 2);
+		batch.draw(birds[flapState], Gdx.graphics.getWidth() / 2 - birds[flapState].getWidth() / 2, birdY);
 		batch.end();
 
-	}
-}
+		// if the game state is not 1 we will do something and if not something else
+		if (gameState != 0) {
+
+		if (Gdx.input.justTouched()) {
+			velocity=-20;                    // velocity = -20
+		}
+			velocity = velocity + gravity;
+			birdY =birdY-velocity;          //0-(-20) if touched..otherwise (0-2)
+		}
+		// else starts here --if the gamestate is not 1
+		else {
+			if (Gdx.input.justTouched()) {
+				gameState = 1;
+			}
+		}
+		//------------------------------------------End
+			if (flapState == 0) {
+				flapState = 1;
+			} else {
+				flapState = 0;
+			}
+
+		}
+
+		}
+
+
