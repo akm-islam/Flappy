@@ -14,7 +14,7 @@ public class MyGdxGame extends ApplicationAdapter {
 	float birdY=0;
 	float velocity=0;
 	int gameState =0;
-	float gravity=2;
+	float gravity=1;
 
 	@Override
 	public void create () {
@@ -36,11 +36,13 @@ public class MyGdxGame extends ApplicationAdapter {
 		// if the game state is not 1 we will do something and if not something else
 		if (gameState != 0) {
 
-		if (Gdx.input.justTouched()) {
-			velocity=-20;                    // velocity = -20
-		}
-			velocity = velocity + gravity;
-			birdY =birdY-velocity;          //0-(-20) if touched..otherwise (0-2)
+			if (Gdx.input.justTouched()) {
+				velocity = -20;                    // velocity = -20
+			}
+			if (birdY>0 || velocity<0) {
+				velocity = velocity + gravity;
+				birdY = birdY - velocity;          //0-(-20) if touched..otherwise (0-2)
+			}
 		}
 		// else starts here --if the gamestate is not 1
 		else {
