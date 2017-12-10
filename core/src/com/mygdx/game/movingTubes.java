@@ -8,13 +8,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.Random;
 
-public class MyGdxGame extends ApplicationAdapter {
+public class movingTubes extends ApplicationAdapter {
     SpriteBatch batch;
     Texture background;
     Texture topTube;
     Texture bottomTube;
     float gap = 400;
-    float tubeVelocity=8;
+    float maxTubeoffset;
+    float tubeVelocity=4;
     int numberOfTubes = 4;
     float maxTubeOffset;
     float[] tubeOffset = new float[numberOfTubes];
@@ -33,7 +34,9 @@ public class MyGdxGame extends ApplicationAdapter {
         distanceBetweenTubes = Gdx.graphics.getWidth() * 3 / 4;
 
         for (int i = 0; i < numberOfTubes; i++) {
+
             tubeOffset[i] = (randomGenerator.nextFloat() - 0.5f) * (Gdx.graphics.getHeight() - gap - 200);
+
             tubeX[i] = Gdx.graphics.getWidth() / 2 - topTube.getWidth() / 2 + i * distanceBetweenTubes;
 
         }
