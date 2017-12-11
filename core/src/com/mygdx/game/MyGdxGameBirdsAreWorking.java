@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class MyGdxGame2 extends ApplicationAdapter {
+public class MyGdxGameBirdsAreWorking extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture background;
 	Texture[] birds;

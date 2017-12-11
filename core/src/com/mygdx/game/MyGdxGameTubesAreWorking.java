@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.Random;
 
-public class MyGdxGame3 extends ApplicationAdapter {
+public class MyGdxGameTubesAreWorking extends ApplicationAdapter {
     SpriteBatch batch;
     Texture background;
     Texture[] birds;
@@ -88,8 +88,6 @@ public class MyGdxGame3 extends ApplicationAdapter {
                 batch.draw(bottomTube, tubeX[i], Gdx.graphics.getHeight() / 2 - gap / 2 - bottomTube.getHeight() + tubeOffset[i]);
 
             }
-
-
 
             if (birdY > 0 || velocity < 0) {
 
